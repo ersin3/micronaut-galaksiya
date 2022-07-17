@@ -1,0 +1,102 @@
+openapi: 3.0.1
+info:
+  title: Home Service
+paths:
+  /homes/addHome:
+    post:
+      operationId: saveHome
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Home'
+        required: true
+      responses:
+        "200":
+          description: saveHome 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Home'
+  /homes/addMq:
+    post:
+      operationId: saveMqHome
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Home'
+        required: true
+      responses:
+        "200":
+          description: saveMqHome 200 response
+          content:
+            application/json:
+              schema:
+                type: string
+  /homes/getAll:
+    get:
+      operationId: getAllHome
+      parameters: []
+      responses:
+        "200":
+          description: getAllHome 200 response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Home'
+  /homes/getByIdHome/{homeId}:
+    get:
+      operationId: getByIdHome
+      parameters:
+      - name: homeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: getByIdHome 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Home'
+components:
+  schemas:
+    Home:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          nullable: true
+        propertyName:
+          type: string
+        price:
+          type: number
+          format: double
+        houseType:
+          type: string
+        areaInSq:
+          type: integer
+          format: int32
+        bedroomsNo:
+          type: integer
+          format: int32
+        bathroomsNo:
+          type: integer
+          format: int32
+        receptionsNo:
+          type: integer
+          format: int32
+        location:
+          type: string
+        cityCountry:
+          type: string
+        postalCode:
+          type: string
